@@ -29,8 +29,8 @@
 | category        | enum       | null: false                    | 
 | condition       | enum       | null: false                    | 
 | postage         | boolean    | null: false                    | 
-| ship_from       | string     | null: false                    |
-| delivery_day    | string     | null: false                    |
+| ship_from       | enum       | null: false                    |
+| delivery_day    | date       | null: false                    |
 | price           | integer    | null: false                    |
 | user_id         | references | null: false, foreign_key: true |
 
