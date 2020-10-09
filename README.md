@@ -15,40 +15,38 @@
 
 ### Association
 - has_many :items
-- has_many :credit_cards
+- has_many :orders
 
 <!-- - has_many :comments -->
 
 ## Items テーブル
 
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| name            | string     | null: false                    |
-| describe        | text       | null: false                    |
-| category        | enum       | null: false                    | 
-| condition       | enum       | null: false                    | 
-| postage         | boolean    | null: false                    | 
-| ship_from       | enum       | null: false                    |
-| delivery_day    | date       | null: false                    |
-| price           | integer    | null: false                    |
-| user_id         | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| name               | string     | null: false                    |
+| describe           | text       | null: false                    |
+| category_id        | integer       | null: false                    | 
+| condition_id       | integer       | null: false                    | 
+| postage_id         | integer    | null: false                    | 
+| ship_from_id       | integer       | null: false                    |
+| delivery_day_id    | integer       | null: false                    |
+| price              | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :credit_card
-- has_ one :destination
+- has_one :orders
 - belongs_to :user
 
 
-## Credit_card
+## Orders
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| user_id         | references | null: false, foreign_key: true |
-| items_id        | references | null: false, foreign_key: true |
-<!-- | card_num        | integer    | null: false                    |
-| expire_date     | integer    | null: false                    |
-| security_code   | integer    | null: false                    | -->
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| user         | references | null: false, foreign_key: true |
+| item         | references | null: false, foreign_key: true |
+
+
 ### Association
 
 - belongs_to :items
@@ -60,16 +58,17 @@
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| postcode        | integer    | null: false                    |
-| prefecture      | enum       | null: false                    | 
+| postcode        | string     | null: false                    |
+| prefecture_id   | integer    | null: false                    | 
 | city            | string     | null: false                    |
+| address         | string     | null: false
 | building        | string     |                                |
-| phone_num       | integer    | null: false                    |
-| credit_card_id  | references | null: false, foreign_key: true |
-| items_id        | references | null: false, foreign_key: true |
+| phone_num       | string     | null: false                    |
+| order           | references | null: false, foreign_key: true |
+
 
 ### Association
 
-- belongs_to :credit_card
-- belongs_to :items
+- belongs_to :orders
+
 
