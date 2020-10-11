@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
   validates :password, format: { with:/\A[a-zA-Z0-9]+\z/, message: "Password Include both letters and numbers" }
+  validates :password_confirmation, presence:true
   validates :nickname, presence: true
   validates :birthday, presence: true
   validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "First name Full-width characters" }
