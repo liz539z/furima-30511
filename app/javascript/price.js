@@ -3,7 +3,8 @@ function price (){
   ItemPrice.addEventListener('keyup', () => {
   ItemValue = (ItemPrice.value);
   const Tax = 0.1;
-  TaxPrice = ItemValue * Tax;
+  BeforeTaxPrice = ItemValue * Tax;
+  TaxPrice = Math.round(BeforeTaxPrice)
   const AddTaxPrice = document.getElementById("add-tax-price");
   AddTaxPrice.innerHTML = TaxPrice;
 
