@@ -16,7 +16,7 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        ¥ 999,999,999
+        ¥<%= @item.price %>
       </span>
       <span class="item-postage">
         (税込) 送料込み
@@ -28,7 +28,7 @@
       <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
       <p class='or-text'>or</p>
       <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
-    <% else %>
+    <% else%>
     <%# 商品が売れていない場合 %>
       <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
     <%# //商品が売れていない場合 %>
