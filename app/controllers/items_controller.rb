@@ -3,17 +3,14 @@ class ItemsController < ApplicationController
   end
 
   def new
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
+    redirect_to new_user_session_path unless user_signed_in?
     @item = Item.new
   end
-
 
   def create
     @item = Item.create(item_params)
     if @item.save
-      redirect_to root_path (current_user.id)
+      redirect_to root_path(current_user.id)
     else
       render action: :new
     end
