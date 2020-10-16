@@ -1,12 +1,12 @@
 class OrdersController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   def index
     @item = Item.find(params[:item_id])
     @order_form = OrderForm.new
-
+    order = Order.find(params[:item_id])
 
     # トップページへ
-    if @item.order.present? || user_signed_in? || (current_user == @item.user)
+    if @item.order.present? || (user_signed_in? && current_user == @item.user)
       redirect_to root_path
     else
       @order_form
