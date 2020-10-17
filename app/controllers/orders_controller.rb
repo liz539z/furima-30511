@@ -1,9 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_item
   def index
-    @item = Item.find(params[:item_id])
     @order_form = OrderForm.new
-    order = Order.find(params[:item_id])
 
     # トップページへ
     if @item.order.present? || (user_signed_in? && current_user == @item.user)
@@ -11,13 +10,10 @@ class OrdersController < ApplicationController
     else
       @order_form
     end
-
-
   end
 
   def create
     @order_form = OrderForm.new(order_params)
-    @item = Item.find(params[:item_id])
 
     if @order_form.valid?
       pay_item
@@ -42,5 +38,9 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
