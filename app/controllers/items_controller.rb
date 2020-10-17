@@ -26,6 +26,7 @@ class ItemsController < ApplicationController
       @item.destroy
       redirect_to root_path
     else
+      @items = Item.all.order('created_at DESC')
       render :index
     end
   end
