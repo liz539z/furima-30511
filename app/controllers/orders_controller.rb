@@ -3,8 +3,6 @@ class OrdersController < ApplicationController
   before_action :set_item
   def index
     @order_form = OrderForm.new
-
-    # トップページへ
     if @item.order.present? || (user_signed_in? && current_user == @item.user)
       redirect_to root_path
     else
