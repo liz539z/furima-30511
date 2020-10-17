@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all.order('created_at DESC')
-    @orders = Order.includes(:item)
   end
 
   def new
@@ -23,7 +22,6 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @orders = Order.includes(:item)
   end
 
   private
