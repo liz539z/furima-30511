@@ -4,8 +4,11 @@ class ItemsController < ApplicationController
   end
 
   def new
-    redirect_to new_user_session_path unless user_signed_in?
-    @item = Item.new
+    if user_signed_in?
+      @item = Item.new
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def create
