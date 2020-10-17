@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-       @item = Item.new
+    @item = Item.new
   end
 
   def create
@@ -23,8 +23,10 @@ class ItemsController < ApplicationController
 
   def destroy
     if user_signed_in? && current_user == @item.user
-    @item.destroy
-    redirect_to root_path
+      @item.destroy
+      redirect_to root_path
+    else
+      render :index
     end
   end
 
